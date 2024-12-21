@@ -1,4 +1,4 @@
-let count = 0;
+let count = parseInt(localStorage.getItem('count')) || 0; // Load saved count or start at 0
 let autoCountInterval = null;
 
 // DOM elements
@@ -8,16 +8,19 @@ const resetButton = document.getElementById('resetButton');
 const startAutoButton = document.getElementById('startAutoButton');
 const mantraInput = document.getElementById('mantraInput');
 
+// Display the initial count
+countDisplay.textContent = count;
+
 // Increment the count
 incrementButton.addEventListener('click', () => {
     count++;
-    countDisplay.textContent = count;
+    updateDisplay();
 });
 
 // Reset the count
 resetButton.addEventListener('click', () => {
     count = 0;
-    countDisplay.textContent = count;
+    updateDisplay();
     clearInterval(autoCountInterval);
     autoCountInterval = null;
     startAutoButton.textContent = "Start Automatic Counting";
@@ -28,7 +31,7 @@ startAutoButton.addEventListener('click', () => {
     if (autoCountInterval === null) {
         autoCountInterval = setInterval(() => {
             count++;
-            countDisplay.textContent = count;
+            updateDisplay();
         }, 1000); // Increment every second
         startAutoButton.textContent = "Stop Automatic Counting";
     } else {
@@ -41,6 +44,11 @@ startAutoButton.addEventListener('click', () => {
 // Optional: Update the mantra text (you could implement further usage here)
 mantraInput.addEventListener('input', () => {
     let mantra = mantraInput.value;
-    // This could be displayed somewhere else, saved, or utilized in future features
     console.log("Mantra Input:", mantra);
 });
+
+// Update display and save count
+function updateDisplay() {
+    countDisplay.textContent = count;
+    localStorage.setItem('count', count); // Save the count in localStorage
+}
