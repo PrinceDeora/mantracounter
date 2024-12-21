@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mantra Counter</title>
+    <link rel="stylesheet" href="mantracounter.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <!-- Circular image at the top left -->
+            <img src="gurudev.jpg" alt="Logo" class="logo">
+            <h1>Mantra Counter</h1>
+            <p>Track your mantra repetitions</p>
+        </header>
+
+        <main>
+            <section class="counter-section">
+                <div class="count-display">
+                    <h2 id="countDisplay">0</h2>
+                </div>
+                <div class="buttons">
+                    <button id="incrementButton">Increase</button>
+                    <button id="resetButton">Reset</button>
+                </div>
+            </section>
+
+            <section class="settings">
+                <label for="mantraInput">Your Mantra:</label>
+                <input type="text" id="mantraInput" placeholder="Enter your mantra">
+                <button id="startAutoButton">Start Automatic Counting</button>
+            </section>
+
+            <section class="timer-section">
+                <p>Automatic Counter will increment every 1 second.</p>
+            </section>
+        </main>
+
+        <footer>
+            <p>Created with ❤️ for mindful counting by Prince Deora</p>
+        </footer>
+    </div>
+
+    <script src="mantracounter.js"></script>
+</body>
+
+</html>
