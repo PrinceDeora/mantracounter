@@ -1,60 +1,77 @@
-// Wait for the DOM to load
 document.addEventListener('DOMContentLoaded', () => {
     const intro = document.querySelector('.intro');
     const container = document.querySelector('.container');
+    const welcomeMessage = document.getElementById('welcomeMessage');
+    const nameInput = document.getElementById('nameInput');
+    const nameSubmitButton = document.getElementById('nameSubmitButton');
+    const countDisplay = document.getElementById('countDisplay');
+    const incrementButton = document.getElementById('incrementButton');
+    const resetButton = document.getElementById('resetButton');
 
-    // Automatically transition to the main app after 3 seconds
+    // Map of specific names to their custom greetings
+    const customGreetings = {
+        "sonu": "Welcome Mumma 🌼",
+        "chandan":"Welcome Mumma🌼",
+        "vikramsingh": "Welcome Daddy 🌟",
+        "nathu": "Welcome Bade Mausi 🌼",
+        "jyoti": "Welcome Mausi 🌟",
+        "devendrasingh": "Welcome Mausa Ji 🌟",
+        "viram": "Welcome Mama 🌼",
+        "ajaysingh": "Welcome Mausa Ji 🌟",
+        "rajendra": "Welcome Mamisa 🌼",
+        "kesarsingh": "Welcome Nanaji 🌟",
+        "meerakanwar": "Welcome Nanisa 🌸"
+    };
+
+    // Smoothly transition from intro to main app (2-3 seconds visible intro)
     setTimeout(() => {
-        intro.style.display = 'none'; // Hide the intro
-        container.classList.remove('hidden'); // Show the main app
-    }, 3500); // Wait for the intro animation to finish
-});
+        intro.classList.add('hidden'); // Add the hidden class for smooth fade-out
+        setTimeout(() => {
+            container.classList.remove('hidden'); // Show the main app after fade-out
+        }, 2000); // Wait for the fade-out transition to complete
+    }, 2500); // Intro stays for 2.5 seconds before transition
 
-// Existing JavaScript functionality
-let count = 0;
-let autoCountInterval = null;
+    // Update welcome message based on name
+    nameSubmitButton.addEventListener('click', () => {
+        // Normalize input by removing spaces and converting to lowercase
+        const normalizedName = nameInput.value.trim().replace(/\s+/g, "").toLowerCase();
 
-const countDisplay = document.getElementById('countDisplay');
-const incrementButton = document.getElementById('incrementButton');
-const resetButton = document.getElementById('resetButton');
-const startAutoButton = document.getElementById('startAutoButton');
-const mantraInput = document.getElementById('mantraInput');
+        // Check if the entered name has a custom greeting
+        if (customGreetings[normalizedName]) {
+            welcomeMessage.textContent = customGreetings[normalizedName];
+            welcomeMessage.classList.add('custom');
 
-// Increment the count
-incrementButton.addEventListener('click', () => {
-    count++;
-    updateDisplay();
-});
+            // Remove animation after 5 seconds
+            setTimeout(() => {
+                welcomeMessage.classList.remove('custom');
+            }, 5000);
+        } else {
+            welcomeMessage.textContent = `Welcome ${nameInput.value.trim()}`;
+            welcomeMessage.classList.remove('custom');
+        }
+    });
 
-// Reset the count
-resetButton.addEventListener('click', () => {
-    count = 0;
-    updateDisplay();
-    clearInterval(autoCountInterval);
-    autoCountInterval = null;
-    startAutoButton.textContent = "Start Auto Counting";
-});
+    // Counter Logic with LocalStorage
+    let count = parseInt(localStorage.getItem('mantraCount')) || 0;
 
-// Start automatic counting
-startAutoButton.addEventListener('click', () => {
-    if (autoCountInterval === null) {
-        autoCountInterval = setInterval(() => {
-            count++;
-            updateDisplay();
-        }, 1000);
-        startAutoButton.textContent = "Stop Auto Counting";
-    } else {
-        clearInterval(autoCountInterval);
-        autoCountInterval = null;
-        startAutoButton.textContent = "Start Auto Counting";
+    // Update the counter display
+    function updateDisplay() {
+        countDisplay.textContent = count;
+        localStorage.setItem('mantraCount', count); // Save the count to localStorage
     }
-});
 
-// Update the counter display
-function updateDisplay() {
-    countDisplay.textContent = count;
-    countDisplay.style.animation = "pulse 0.5s ease";
-    setTimeout(() => {
-        countDisplay.style.animation = "none";
-    }, 500);
-}
+    // Initialize display with saved count
+    updateDisplay();
+
+    // Increment the count
+    incrementButton.addEventListener('click', () => {
+        count++;
+        updateDisplay();
+    });
+
+    // Reset the count
+    resetButton.addEventListener('click', () => {
+        count = 0;
+        updateDisplay();
+    });
+});
