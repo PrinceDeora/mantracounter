@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Spiritual Mantra Counter</title>
+    <title> Mantra Counter</title>
     <link rel="stylesheet" href="mantracounter.css">
+    <link rel="shortcut icon" href="Mantra counter (1).png" type="png">
 </head>
 <body>
+    <!-- circular image -->
+    <div class="image-container">
+        <img src="gurudev.jpg" alt="Circular Image" class="circular-image">
+    </div>    
+
     <!-- Intro Section -->
     <div class="intro">
         <h1>Welcome to the Mantra Counter</h1>
@@ -17,8 +22,7 @@
     <!-- Main App Section -->
     <div class="container hidden">
         <header>
-            <img src="gurudev.jpg" alt="Guru" class="logo">
-            <h1>ॐ Mantra Counter ॐ</h1>
+            <h1 id="welcomeMessage"> Mantra Counter </h1>
             <p>Track your mantra repetitions with devotion</p>
         </header>
 
@@ -32,15 +36,11 @@
             </section>
 
             <section class="settings">
-                <label for="mantraInput">Enter Your Mantra:</label>
-                <input type="text" id="mantraInput" placeholder="E.g., ॐ नमः शिवाय">
-                <button id="startAutoButton">Start Auto Counting</button>
+                <label for="nameInput">Enter Your Name:</label>
+                <input type="text" id="nameInput" placeholder="E.g., Your First Name">
+                <button id="nameSubmitButton">Submit</button>
             </section>
         </main>
-
-        <footer>
-            <p>🌸 Created with devotion for mindful chanting 🌸</p>
-        </footer>
     </div>
 
     <script src="mantracounter.js"></script>
