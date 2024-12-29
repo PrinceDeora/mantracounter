@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Mantra Counter</title>
+    <title>Mantra Counter</title>
     <link rel="stylesheet" href="mantracounter.css">
     <link rel="shortcut icon" href="Mantra counter (1).png" type="png">
 </head>
 <body>
-    <!-- circular image -->
+    <!-- Circular Image -->
     <div class="image-container">
         <img src="gurudev.jpg" alt="Circular Image" class="circular-image">
     </div>    
@@ -22,11 +22,12 @@
     <!-- Main App Section -->
     <div class="container hidden">
         <header>
-            <h1 id="welcomeMessage"> Mantra Counter </h1>
+            <h1 id="welcomeMessage">Mantra Counter</h1>
             <p>Track your mantra repetitions with devotion</p>
         </header>
 
         <main>
+            <!-- Counter Section -->
             <section class="counter-section">
                 <div class="count-display" id="countDisplay">0</div>
                 <div class="buttons">
@@ -35,14 +36,43 @@
                 </div>
             </section>
 
+            <!-- Settings Section -->
             <section class="settings">
                 <label for="nameInput">Enter Your Name:</label>
                 <input type="text" id="nameInput" placeholder="E.g., Your First Name">
                 <button id="nameSubmitButton">Submit</button>
             </section>
-        </main>
-    </div>
 
+            <!-- Rating Card Section -->
+            <section class="rating-card">
+                <div class="text-wrapper">
+                    <p class="text-primary">Rate this Application</p>
+                    <p class="text-secondary">We value your feedback 🌟</p>
+                </div>
+                <div class="rating-stars-container">
+                    <input type="radio" id="star5" name="rating" value="5">
+                    <label class="star-label" for="star5">
+                        <svg viewBox="0 0 24 24"><path d="M12 .587l3.668 7.429L24 9.264l-6 5.834 1.412 8.225L12 18.751 4.588 23.324 6 15.099 0 9.264l8.332-1.248z"></path></svg>
+                    </label>
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label class="star-label" for="star4">
+                        <svg viewBox="0 0 24 24"><path d="M12 .587l3.668 7.429L24 9.264l-6 5.834 1.412 8.225L12 18.751 4.588 23.324 6 15.099 0 9.264l8.332-1.248z"></path></svg>
+                    </label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label class="star-label" for="star3">
+                        <svg viewBox="0 0 24 24"><path d="M12 .587l3.668 7.429L24 9.264l-6 5.834 1.412 8.225L12 18.751 4.588 23.324 6 15.099 0 9.264l8.332-1.248z"></path></svg>
+                    </label>
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label class="star-label" for="star2">
+                        <svg viewBox="0 0 24 24"><path d="M12 .587l3.668 7.429L24 9.264l-6 5.834 1.412 8.225L12 18.751 4.588 23.324 6 15.099 0 9.264l8.332-1.248z"></path></svg>
+                    </label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label class="star-label" for="star1">
+                        <svg viewBox="0 0 24 24"><path d="M12 .587l3.668 7.429L24 9.264l-6 5.834 1.412 8.225L12 18.751 4.588 23.324 6 15.099 0 9.264l8.332-1.248z"></path></svg>
+                    </label>
+                </div>
+            </section>
+            
     <script src="mantracounter.js"></script>
 </body>
 </html>
